@@ -13,6 +13,6 @@ jobs:
       - name: Cancel
         uses: Homebrew/actions/cancel-previous-runs@master
         with:
-          token: ${{secrets.HOMEBREW_GITHUB_API_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
           workflow: tests.yml
           event: pull_request
