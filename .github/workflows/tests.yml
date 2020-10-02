@@ -1,8 +1,9 @@
-name: GitHub Actions CI
+name: Test formulae
 on:
   push:
-    branches: master
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 env:
   HOMEBREW_DEVELOPER: 1
   HOMEBREW_GITHUB_ACTIONS: 1
