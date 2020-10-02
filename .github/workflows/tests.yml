@@ -28,6 +28,15 @@ jobs:
       run: brew install-bundler-gems
 
     - run: brew test-bot --only-tap-syntax
+      
+    # Create new tag
+    - name: Create new tag
+      id: tagcreation
+      uses: mathieudutour/github-tag-action@v4.6
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tag_prefix: v
+        release_branches: master
 
   tests:
     needs: tap_syntax
@@ -99,12 +108,3 @@ jobs:
       - name: Post Cleanup
         if: always()
         run: rm -rvf bottles
-
-      # Create new tag
-      - name: Create new tag
-        id: tagcreation
-        uses: mathieudutour/github-tag-action@v4.6
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tag_prefix: v
-          release_branches: master
